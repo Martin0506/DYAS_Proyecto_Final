@@ -1,5 +1,5 @@
 package com.trainly.app.trainlyapp.services;
 
-public class Observer {
-    
+public interface  Observer {
+    void update(String state);
 }
