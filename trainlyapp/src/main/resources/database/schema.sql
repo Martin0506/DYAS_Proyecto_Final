@@ -1,3 +1,4 @@
+-- Active: 1730577143015@@127.0.0.1@3306@trainly
 -- Crea la base de datos si no existe
 CREATE DATABASE IF NOT EXISTS trainly;
 USE trainly;
@@ -11,6 +12,10 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+ALTER TABLE users
+ADD COLUMN user_type ENUM('TRAINER', 'CLIENT') NOT NULL;
+
 
 -- Tabla de notificaciones
 CREATE TABLE IF NOT EXISTS notifications (
