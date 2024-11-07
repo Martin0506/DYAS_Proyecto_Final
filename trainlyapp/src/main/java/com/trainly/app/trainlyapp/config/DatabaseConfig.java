@@ -3,28 +3,16 @@ package com.trainly.app.trainlyapp.config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
-import java.io.InputStream;
 
 public class DatabaseConfig {
-    private static Connection connection = null;
+
+    private static final String URL = "jdbc:mysql://localhost:3306/trainly"; // Cambia 'trainly' por el nombre de tu base de datos
+    private static final String USER = "root"; // Cambia por tu usuario de MySQL
+    private static final String PASSWORD = "12345"; // Cambia por tu contraseña de MySQL
 
     public static Connection getConnection() throws SQLException {
-        if (connection == null) {
-            try (InputStream input = DatabaseConfig.class.getClassLoader().getResourceAsStream("application.properties")) {
-                Properties prop = new Properties();
-                prop.load(input);
-
-                String url = prop.getProperty("db.url");
-                String username = prop.getProperty("db.username");
-                String password = prop.getProperty("db.password");
-
-                connection = DriverManager.getConnection(url, username, password);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return connection;
+        return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
+
 
