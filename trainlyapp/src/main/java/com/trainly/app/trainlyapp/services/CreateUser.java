@@ -17,8 +17,21 @@ public class CreateUser {
     public boolean authenticate(String email, String password) {
         User user = userDAO.loginUser(email, password);
         return user != null;
+
+
+        if (userType.equalsIgnoreCase("client")) {
+            factory = new CreateClientFactory();
+        } else if (userType.equalsIgnoreCase("trainer")) {
+            factory = new CreateTrainerFactory();
+        } else {
+            throw new IllegalArgumentException("Tipo de usuario no válido");
         }
+
+        User user = factory.createProfile(userType);
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+
+        return userDAO.registerUser(user);
+    }
 }
-
-
-
