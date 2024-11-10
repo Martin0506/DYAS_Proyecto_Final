@@ -1,7 +1,7 @@
 package com.trainly.app.trainlyapp.services;
 
 
-public class User {
+public abstract class User {
     private int id;
     private String username;
     private String password;
