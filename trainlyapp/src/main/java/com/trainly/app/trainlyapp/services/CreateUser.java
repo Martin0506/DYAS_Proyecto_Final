@@ -3,7 +3,7 @@ package com.trainly.app.trainlyapp.services;
 import org.springframework.stereotype.Service;
 
 import com.trainly.app.trainlyapp.DAO.UserDAO;
-import com.trainly.app.trainlyapp.services.User;
+
 @Service
 public class CreateUser {
     private UserDAO userDAO = new UserDAO();
